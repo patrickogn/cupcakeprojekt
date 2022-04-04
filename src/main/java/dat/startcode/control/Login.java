@@ -44,6 +44,8 @@ public class Login extends HttpServlet
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        //TODO ligegyldig kommentar fra Marie
+
         try
         {
             user = userMapper.login(username, password);
