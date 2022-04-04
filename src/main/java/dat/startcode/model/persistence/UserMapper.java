@@ -23,7 +23,7 @@ public class UserMapper implements IUserMapper
 
         User user = null;
 
-        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
@@ -34,7 +34,7 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
-                    String role = rs.getString("role");
+                    String role = rs.getString("role_id");
                     user = new User(email, password, role);
                 } else
                 {
