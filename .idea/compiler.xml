@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cupcakeprojekt" />
-        <module name="startcode" />
+        <module name="startcode" /><!--TODO: Startcode-->
         <module name="startcode_2sem_2022" />
       </profile>
     </annotationProcessing>

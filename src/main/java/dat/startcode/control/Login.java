@@ -41,10 +41,10 @@ public class Login extends HttpServlet
         session.setAttribute("user", null); // adding empty user object to session scope
         UserMapper userMapper = new UserMapper(connectionPool);
         User user = null;
-        String username = request.getParameter("username");
+        String username = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //TODO ligegyldig kommentar fra Marie
+
 
         try
         {
