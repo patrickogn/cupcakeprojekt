@@ -25,5 +25,12 @@
             <input type="submit"  value="Log in"/>
         </form>
 
+        <br>
+        <br>
+
+        <form action="OpretBrugerServlet" method="get">
+            <input type="submit"  value="Opret bruger"/>
+        </form>
+
     </jsp:body>
 </t:pagetemplate>

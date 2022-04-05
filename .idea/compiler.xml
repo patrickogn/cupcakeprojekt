@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="startcode" />
         <module name="cupcakeprojekt" />
-        <module name="startcode" /><!--TODO: Startcode-->
+        <module name="cupcake" />
         <module name="startcode_2sem_2022" />
       </profile>
     </annotationProcessing>
