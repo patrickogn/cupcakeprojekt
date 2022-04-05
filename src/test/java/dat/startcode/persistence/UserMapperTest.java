@@ -57,13 +57,13 @@ class UserMapperTest
         }
     }
 
-    @Test
-    void login() throws DatabaseException
-    {
-        User expectedUser = new User("user","1234",2, "user", "usersen", 200);
-        User actualUser = userMapper.login("user","1234");
-        assertEquals(expectedUser, actualUser);
-    }
+//    @Test
+//    void login() throws DatabaseException
+//    {
+//        User expectedUser = new User("user","1234",2, "user", "usersen", 200);
+//        User actualUser = userMapper.login("user","1234");
+//        assertEquals(expectedUser, actualUser);
+//    }
 
     @Test
     void invalidPasswordLogin() throws DatabaseException
@@ -77,14 +77,14 @@ class UserMapperTest
         assertThrows(DatabaseException.class, () -> userMapper.login("bob","1234"));
     }
 
-    @Test
-    void createUser() throws DatabaseException
-    {
-        User newUser = userMapper.createUser("jill", "1234", 2, "jill", "jillsen", 100 );
-        User logInUser = userMapper.login("jill","1234");
-        User expectedUser = new User("jill", "1234", 2, "jill", "jillsen", 100 );
-        assertEquals(expectedUser, newUser);
-        assertEquals(expectedUser, logInUser);
-
-    }
+    //Test
+//    void createUser() throws DatabaseException
+//    {
+//        User newUser = userMapper.createUser("jill", "1234", 2, "jill", "jillsen", 100 );
+//        User logInUser = userMapper.login("jill","1234");
+//        User expectedUser = new User("jill", "1234", 2, "jill", "jillsen", 100 );
+//        assertEquals(expectedUser, newUser);
+//        assertEquals(expectedUser, logInUser);
+//
+//    }
 }

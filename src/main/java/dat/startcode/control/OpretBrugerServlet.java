@@ -40,12 +40,15 @@ public class OpretBrugerServlet extends HttpServlet {
         int balanceInt = Integer.parseInt(balance);
 
         String user_id = "0";
+        int user_idInt = Integer.parseInt(user_id);
         String phone_no = "11111111";
+        int phone_noInt = Integer.parseInt(phone_no);
 
 
-//        UserMapper userMapper = null;
+//        UserMapper userMapper = new UserMapper(connectionPool);
 //        try {
 //            userMapper.createUser(email, password, roleId, firstname, surname, balance);
+        //TODO: vil gerne bruge createUser-metoden, men kan ikke få det til at virke
 //        } catch (DatabaseException e) {
 //            e.printStackTrace();
 //        }
@@ -82,7 +85,7 @@ public class OpretBrugerServlet extends HttpServlet {
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(email, password, roleId, firstname, lastname, balanceInt);
+                    user = new User(user_idInt, password, roleId, firstname, lastname, balanceInt, phone_noInt, email);
                 } else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
