@@ -34,8 +34,13 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
-                    String role = rs.getString("role_id");
-                    user = new User(email, password, role);
+                    String roleIdString = rs.getString("role_id");
+                    int roleId = Integer.parseInt(roleIdString);
+                    String firstname = rs.getString("firstname");
+                    String surname = rs.getString("lastname");
+                    int balance = Integer.parseInt(rs.getString("balance"));
+
+                    user = new User(email, password, roleId, firstname, surname, balance);
                 } else
                 {
                     throw new DatabaseException("Wrong email or password");
@@ -49,22 +54,23 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User createUser(String email, String password, String role) throws DatabaseException
+    public User createUser(String email, String password, int roleId, String firstname, String surname, int balance) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
-        String sql = "insert into user (email, password, role) values (?,?,?)";
+        String roleIdString = "" + roleId;
+        String sql = "insert into user (email, password, roleIdString) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setString(1, email);
                 ps.setString(2, password);
-                ps.setString(3, role);
+                ps.setString(3, roleIdString);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(email, password, role);
+                    user = new User(email, password, roleId, firstname, surname, balance);
                 } else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");

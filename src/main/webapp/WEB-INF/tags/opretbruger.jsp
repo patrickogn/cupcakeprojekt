@@ -69,14 +69,18 @@
 </head>
 <body>
 
-<form action="Register" method="get">
+<%--<form action="Register" method="get">--%>
+<form action="OpretBrugerServlet">
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
 
-        <label for="User_id"><b>User_id</b></label>
+        <%--<label for="User_id"><b>User_id</b></label>
         <input type="text" placeholder="User_id" name="User_id" id="User_id" required>
+--%>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
@@ -84,20 +88,19 @@
         <label for="psw-repeat"><b>Repeat Password</b></label>
         <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
 
-        <label for="Role_id"><b>Role_id</b></label>
+     <%--   <label for="Role_id"><b>Role_id</b></label>
         <input type="text" placeholder="Role_id" name="Role_id" id="Role_id" required>
+        Skal bare sættes til bruger som standard, vroes startadmin, skal så kunne opgradere folk--%>
 
-        <label for="First name"><b>First name</b></label>
-        <input type="text" placeholder="First name" name="First name" id="First name" required>
+        <label for="firstname"><b>First name</b></label>
+        <input type="text" placeholder="First name" name="firstname" id="firstname" required>
 
-        <label for="Surname"><b>Surname</b></label>
-        <input type="text" placeholder="Surname" name="Surname" id="Surname" required>
+        <label for="surname"><b>Surname</b></label>
+        <input type="text" placeholder="Surname" name="surname" id="surname" required>
 
-        <label for="Balance"><b>Balance</b></label>
-        <input type="text" placeholder="Balance" name="Balance" id="Balance" required>
+        <label for="balance"><b>Balance</b></label>
+        <input type="text" placeholder="Balance" name="balance" id="balance" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
 
         <hr>

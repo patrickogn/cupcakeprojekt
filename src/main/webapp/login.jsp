@@ -28,7 +28,7 @@
         <br>
         <br>
 
-        <form action="OpretBrugerServlet" method="get">
+        <form action="OpretBrugerKnapServlet" method="get">
             <input type="submit"  value="Opret bruger"/>
         </form>
 

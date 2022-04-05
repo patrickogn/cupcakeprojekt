@@ -6,5 +6,5 @@ import dat.startcode.model.exceptions.DatabaseException;
 public interface IUserMapper
 {
     public User login(String email, String kodeord) throws DatabaseException;
-    public User createUser(String email, String password, String role) throws DatabaseException;
+    public User createUser(String email, String password, int roleId, String firstname, String surname, int balance) throws DatabaseException;
 }

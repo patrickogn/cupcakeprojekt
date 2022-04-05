@@ -6,13 +6,19 @@ public class User
 {
     private String email;
     private String password;
-    private String role;
+    private int roleId;
+    private String firstname;
+    private String lastname;
+    private int balance;
 
-    public User(String email, String password, String role)
+    public User(String email, String password, int roleId, String firstname, String lastname, int balance)
     {
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.roleId = roleId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.balance = balance;
     }
 
 
@@ -23,7 +29,7 @@ public class User
         return "User{" +
                 "brugerNavn='" + email + '\'' +
                 ", kodeord='" + password + '\'' +
-                ", rolle='" + role + '\'' +
+                ", rolle='" + roleId + '\'' +
                 '}';
     }
 
@@ -47,14 +53,14 @@ public class User
         this.password = password;
     }
 
-    public String getRole()
+    public int getRoleId()
     {
-        return role;
+        return roleId;
     }
 
-    public void setRole(String role)
+    public void setRoleId(int roleId)
     {
-        this.role = role;
+        this.roleId = roleId;
     }
 
     @Override
@@ -64,12 +70,12 @@ public class User
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return getEmail().equals(user.getEmail()) && getPassword().equals(user.getPassword()) &&
-                getRole().equals(user.getRole());
+                getRoleId() == user.getRoleId();
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getEmail(), getPassword(), getRole());
+        return Objects.hash(getEmail(), getPassword(), getRoleId());
     }
 }
