@@ -23,6 +23,12 @@
         <c:if test="${sessionScope.user == null}">
             <p>You are not logged in yet. You can do it here: <a
                     href="login.jsp">Login</a></p>
+            <br>
+            <br>
+
+            <form action="OpretBrugerKnapServlet" method="get">
+                <input type="submit"  value="Opret bruger"/>
+            </form>
         </c:if>
 
     </jsp:body>
