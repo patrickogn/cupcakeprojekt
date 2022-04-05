@@ -35,9 +35,13 @@ public class OpretBrugerServlet extends HttpServlet {
         String rpPassword = request.getParameter("psw-repeat");
 
         String firstname = request.getParameter("firstname");
-        String surname = request.getParameter("surname");
-        String balanceString = request.getParameter("balance");
-        int balance = Integer.parseInt(balanceString);
+        String lastname = request.getParameter("surname");
+        String balance = request.getParameter("balance");
+        int balanceInt = Integer.parseInt(balance);
+
+        String user_id = "0";
+        String phone_no = "11111111";
+
 
 //        UserMapper userMapper = null;
 //        try {
@@ -48,24 +52,37 @@ public class OpretBrugerServlet extends HttpServlet {
 
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
-        String roleIdString = "" + roleId;
-        String sql = "insert into user (email, password, roleIdString, firstname, surname, balanceString) values (?,?,?,?,?,?)";
+        String role_id = "" + roleId;
+        //String sql = "insert into user (email, password, roleIdString, firstname, surname, balanceString) values (?,?,?,?,?,?)";
+        String sql = "insert into user (user_id, password, role_id, firstname, lastname, balance, phone_no, email) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setString(1, email);
+
+
+                ps.setString(1, user_id);
                 ps.setString(2, password);
-                ps.setString(3, roleIdString);
+                ps.setString(3, role_id);
                 ps.setString(4, firstname);
-                ps.setString(5, surname);
-                ps.setString(6, balanceString);
+                ps.setString(5, lastname);
+                ps.setString(6, balance);
+                ps.setString(7, phone_no);
+                ps.setString(8, email);
+
+
+//                ps.setString(1, email);
+//                ps.setString(2, password);
+//                ps.setString(3, roleIdString);
+//                ps.setString(4, firstname);
+//                ps.setString(5, surname);
+//                ps.setString(6, balanceString);
 
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(email, password, roleId, firstname, surname, balance);
+                    user = new User(email, password, roleId, firstname, lastname, balanceInt);
                 } else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
@@ -80,6 +97,7 @@ public class OpretBrugerServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
         //User user = new User(email, password, roleId, firstname, surname, balance);
 
