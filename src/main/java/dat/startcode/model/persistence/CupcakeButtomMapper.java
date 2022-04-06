@@ -39,8 +39,9 @@ public class CupcakeButtomMapper implements ICupcakeMapper {
                     int buttom_id = rs.getInt("buttom_id");
                     String flavor = rs.getString("flavor");
                     int price = rs.getInt("price");
+                    String buttom_picture_id = rs.getString("buttom_picture_id");
 
-                    Cupcakebuttom cupcakebuttom = new Cupcakebuttom(buttom_id, flavor, price);
+                    Cupcakebuttom cupcakebuttom = new Cupcakebuttom(buttom_id, flavor, price, buttom_picture_id);
                     cupcakebuttomList.add(cupcakebuttom);
                 }
             }
