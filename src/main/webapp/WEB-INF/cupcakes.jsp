@@ -27,7 +27,7 @@
         <th>CupcakeButtom-Id</th>
         <th>Flavor</th>
         <th>Price</th>
-
+        <th></th>
     </tr>
 
     </thead>
@@ -37,7 +37,7 @@
             <td>${cupcakebuttom.buttom_id}</td>
             <td>${cupcakebuttom.flavor}</td>
             <td>${cupcakebuttom.price}</td>
-
+<%--            <td><button name="bogid" formaction="laanbog" value="${bog.bogId}" class="btn btn-secondary">Lån bog</button></td>--%>
         </tr>
     </c:forEach>
     </tbody>
