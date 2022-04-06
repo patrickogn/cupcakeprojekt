@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
+                <img src="${pageContext.request.contextPath}/images/test2.png" width="250px;" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,16 +54,22 @@
     <hr/>
     <div class="row mt-4">
         <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+            Her kan de finde os:<br/>
+            Olsker, Lindesgårdsvej 1, 3770 Allinge<br/>
+
         </div>
         <div class="col">
             <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
+            <p>&copy; Olsker Cupcakes INC</p>
         </div>
         <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester forår 2022
+            Åbningstider:<br/>
+            <br/>
+            Man - Fre - 8:00 - 21:00
+            <br/>
+            Lør - 8:00 - 20:00
+            <br/>
+            Søn - Lukket
         </div>
     </div>
 
