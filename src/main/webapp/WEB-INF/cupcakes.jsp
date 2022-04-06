@@ -183,8 +183,10 @@
             <div class="col-md-4">
                 <div class="thumbnail">
                     <a href="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" target="_blank">
-                        <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" alt="Lights" style="width:100%">
+                        <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" alt="Lights" style="width:150px">
                         <div class="caption">
+                            <input type="radio" id="flavorprice" name="flavor" value="Chokolade">
+                            <label for="flavorprice">{cupcakebuttom.flavor} ${cupcakebuttom.price} kr</label><br>
                             <p>${cupcakebuttom.flavor} ${cupcakebuttom.price} kr</p>
                         </div>
                     </a>
