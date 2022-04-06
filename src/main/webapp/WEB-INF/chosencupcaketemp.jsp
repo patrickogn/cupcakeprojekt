@@ -10,7 +10,7 @@
 <head>
     <title>Chosencupcaketemp</title>
 
-    ${sessionScope.}
+    ${requestScope.chosencupcakelist}
 </head>
 <body>
 
