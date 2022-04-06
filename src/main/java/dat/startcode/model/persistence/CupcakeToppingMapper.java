@@ -48,7 +48,7 @@ public class CupcakeToppingMapper implements ICupcakeToppingMapper {
         }
         catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Fejl under indlæsning af cupcakebunde fra databasen");
+            throw new DatabaseException(ex, "Fejl under indlæsning af cupcaketoppe fra databasen");
         }
         return cupcaketoppingList;
     }

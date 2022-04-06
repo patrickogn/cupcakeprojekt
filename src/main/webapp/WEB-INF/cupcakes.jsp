@@ -57,8 +57,8 @@
                                 <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="flavorprice" name="flavor" value="flavor">
-                                    <label for="flavorprice">${cupcakebuttom.flavor} ${cupcakebuttom.price}
+                                    <input type="radio" id="flavorpricebuttom" name="flavor" value="flavor">
+                                    <label for="flavorpricebuttom">${cupcakebuttom.flavor} ${cupcakebuttom.price}
                                         kr</label><br>
                                 </div>
                                 </a>
@@ -70,14 +70,9 @@
         </form>
 
         <br><br><br><br>
-        <h2>Vælg bund</h2>
+        <h2>Vælg topping</h2>
         <form action="/">
             <div class="container">
-
-                    <%--        <p>The .thumbnail class can be used to display an image gallery.</p>--%>
-                    <%--        <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>--%>
-                    <%--        <p>Click on the images to enlarge them.</p>--%>
-
 
                 <div class="row">
                     <c:forEach var="cupcaketopping" items="${requestScope.cupcaketoppinglist}">
@@ -100,31 +95,6 @@
             </div>
         </form>
 
-
-        <br><br><br><br><br><br><br><br>
-        <h2>Vælg topping</h2>
-        <br><br><br><br><br>
-        <form action="/">
-            <div class="container">
-                <div class="row">
-                    <c:forEach var="cupcaketopping" items="${requestScope.cupcaketoppinglist}">
-                        <div class="col-md-2">
-                            <div class="">
-                                    <%--                    <a href="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" target="_blank">--%>
-                                <img src="${pageContext.request.contextPath}/images/${cupcaketopping.topping_picture_id}"
-                                     alt="Toppings" style="width:150px">
-                                <div class="caption">
-                                    <input type="radio" id="flavorpricetopping" name="flavor" value="flavor">
-                                    <label for="flavorpricetopping">${cupcaketopping.flavor} ${cupcaketopping.price}
-                                        kr</label><br>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-        </form>
         <input type="submit" value="Vælg cupcake">
 
 
