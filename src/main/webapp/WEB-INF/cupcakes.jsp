@@ -40,7 +40,7 @@
 
         <br><br><br><br>
         <h2>Vælg bund</h2>
-        <form action="/">
+        <form action="ChooseCupcakeServlet" method="get">
             <div class="container">
 
                     <%--        <p>The .thumbnail class can be used to display an image gallery.</p>--%>
@@ -50,15 +50,14 @@
 
                 <div class="row">
                     <c:forEach var="cupcakebuttom" items="${requestScope.cupcakebuttomlist}">
-
                         <div class="col-md-2">
                             <div class="">
                                     <%--                    <a href="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" target="_blank">--%>
                                 <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="flavorpricebuttom" name="flavor" value="flavor">
-                                    <label for="flavorpricebuttom">${cupcakebuttom.flavor} ${cupcakebuttom.price}
+                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="buttom${cupcakebuttom.flavor}">
+                                    <label for="buttom${cupcakebuttom.flavor}">${cupcakebuttom.flavor} ${cupcakebuttom.price}
                                         kr</label><br>
                                 </div>
                                 </a>
@@ -67,24 +66,23 @@
                     </c:forEach>
                 </div>
             </div>
-        </form>
+<%--            <input type="submit" value="Vælg bund">--%>
+<%--        </form>--%>
 
         <br><br><br><br>
         <h2>Vælg topping</h2>
-        <form action="/">
+<%--        <form action="ChooseCupcakeServlet" method="get">--%>
             <div class="container">
-
                 <div class="row">
                     <c:forEach var="cupcaketopping" items="${requestScope.cupcaketoppinglist}">
-
                         <div class="col-md-2">
                             <div class="">
                                     <%--                    <a href="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" target="_blank">--%>
                                 <img src="${pageContext.request.contextPath}/images/${cupcaketopping.topping_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="flavorpricetop" name="flavor" value="flavor">
-                                    <label for="flavorpricetop">${cupcaketopping.flavor} ${cupcaketopping.price}
+                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="topping${cupcaketopping.flavor}">
+                                    <label for="topping${cupcaketopping.flavor}">${cupcaketopping.flavor} ${cupcaketopping.price}
                                         kr</label><br>
                                 </div>
                                 </a>
@@ -93,9 +91,9 @@
                     </c:forEach>
                 </div>
             </div>
+            <br><br>
+            <input type="submit" value="Vælg cupcake">
         </form>
-
-        <input type="submit" value="Vælg cupcake">
 
 
         </body>
