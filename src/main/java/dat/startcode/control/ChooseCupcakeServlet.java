@@ -28,6 +28,9 @@ public class ChooseCupcakeServlet extends HttpServlet {
         request.setAttribute("chosencupcakelist", chosenCupcakeList);
 
         request.getRequestDispatcher("WEB-INF/chosencupcaketemp.jsp").forward(request, response);
+  //      request.getRequestDispatcher("WEB-INF/cupcakes.jsp").forward(request, response);
+    //    request.getRequestDispatcher("/IndexServlet").forward(request, response);
+
     }
 
     @Override

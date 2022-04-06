@@ -40,7 +40,7 @@
 
         <br><br><br><br>
         <h2>Vælg bund</h2>
-        <form action="ChooseCupcakeServlet" method="get">
+        <form action="ChooseCupcakeServlet", "Indexservlet" method="get">
             <div class="container">
 
                     <%--        <p>The .thumbnail class can be used to display an image gallery.</p>--%>
@@ -56,7 +56,7 @@
                                 <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="buttom${cupcakebuttom.flavor}">
+                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="${cupcakebuttom.flavor}">
                                     <label for="buttom${cupcakebuttom.flavor}">${cupcakebuttom.flavor} ${cupcakebuttom.price}
                                         kr</label><br>
                                 </div>
@@ -81,7 +81,7 @@
                                 <img src="${pageContext.request.contextPath}/images/${cupcaketopping.topping_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="topping${cupcaketopping.flavor}">
+                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="${cupcaketopping.flavor}">
                                     <label for="topping${cupcaketopping.flavor}">${cupcaketopping.flavor} ${cupcaketopping.price}
                                         kr</label><br>
                                 </div>
@@ -94,7 +94,7 @@
             <br><br>
             <input type="submit" value="Vælg cupcake">
         </form>
-
+            ${requestScope.chosencupcakelist}
 
         </body>
         </html>

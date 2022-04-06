@@ -56,12 +56,9 @@ public class ChosenCupcake {
 
     @Override
     public String toString() {
-        return "ChosenCupcake{" +
-                "buttom='" + buttom + '\'' +
-                ", topping='" + topping + '\'' +
-                ", cupcakePrice=" + cupcakePrice +
-                ", buttomPrice=" + buttomPrice +
-                ", toppingPrice=" + toppingPrice +
-                '}';
+        return "Cupcake: " +
+                "bund " + buttom +
+                ", topping " + topping +
+                ", pris " + cupcakePrice + " kr";
     }
 }
