@@ -5,7 +5,7 @@ import dat.startcode.model.exceptions.DatabaseException;
 
 import java.util.List;
 
-public interface ICupcakeMapper {
+public interface ICupcakeButtomMapper {
 
 
     // Find alle bøger, og deres forfattere
