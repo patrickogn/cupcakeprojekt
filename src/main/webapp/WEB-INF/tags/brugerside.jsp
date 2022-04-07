@@ -27,11 +27,20 @@
             <strong style="font-size: 25px;">Velkommen tilbage:  ${sessionScope.user.firstname} ${sessionScope.user.lastname}</strong>
             <br>
             <br>
-            <strong style="font-size:25px;">Din nuværende saldo er: ${sessionScope.user.balance} kr.</strong>
+            <p style="font-size:18px;">Din nuværende saldo er: ${sessionScope.user.balance} kr.</p>
             <br>
 
             <br>
-            <p>Rolle: "${sessionScope.user.roleId}".</p>
+<%--            <p>Rolle: "${sessionScope.user.roleId}".</p>--%>
+<%--            <p>Rolle: "${sessionScope.role.name}".</p>--%>
+
+            <c:if test="${sessionScope.user.roleId == 1}">
+                <p>Rolle: administrator.</p>
+            </c:if>
+            <c:if test="${sessionScope.user.roleId == 2}">
+                <p>Rolle: bruger.</p>
+            </c:if>
+<%--        Bedre at hente rollenavnet direkte fra databasen--%>
 
         </c:if>
 

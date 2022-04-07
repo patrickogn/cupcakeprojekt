@@ -38,7 +38,7 @@
         </head>
         <body>
 
-        <br><br><br><br>
+        <br><br><br><br><br>
         <h2>Vælg bund</h2>
         <form action="ChooseCupcakeServlet", "Indexservlet" method="get">
             <div class="container">
@@ -56,7 +56,8 @@
                                 <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="${cupcakebuttom.flavor}">
+<%--                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="${cupcakebuttom.flavor}">--%>
+                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="${cupcakebuttom.buttom_id}">
                                     <label for="buttom${cupcakebuttom.flavor}">${cupcakebuttom.flavor} ${cupcakebuttom.price}
                                         kr</label><br>
                                 </div>
@@ -69,7 +70,7 @@
 <%--            <input type="submit" value="Vælg bund">--%>
 <%--        </form>--%>
 
-        <br><br><br><br>
+        <br>
         <h2>Vælg topping</h2>
 <%--        <form action="ChooseCupcakeServlet" method="get">--%>
             <div class="container">
@@ -81,7 +82,8 @@
                                 <img src="${pageContext.request.contextPath}/images/${cupcaketopping.topping_picture_id}"
                                      alt="Buttoms" style="width:150px">
                                 <div class="caption">
-                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="${cupcaketopping.flavor}">
+<%--                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="${cupcaketopping.flavor}">--%>
+                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="${cupcaketopping.topping_id}">
                                     <label for="topping${cupcaketopping.flavor}">${cupcaketopping.flavor} ${cupcaketopping.price}
                                         kr</label><br>
                                 </div>
@@ -94,7 +96,12 @@
             <br><br>
             <input type="submit" value="Vælg cupcake">
         </form>
-            ${requestScope.chosencupcakelist}
+<%--            ${requestScope.chosencupcakelist}--%>
+        <br><br>
+        <c:forEach var="cartitem" items="${sessionScope.cartDTOList}">
+           <p>${cartitem.quantity} stk - Bund: ${cartitem.buttom.flavor}, Topping: ${cartitem.topping.flavor} ${cartitem.price} kr</p>
+
+        </c:forEach>
 
         </body>
         </html>
