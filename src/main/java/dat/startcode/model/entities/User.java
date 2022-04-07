@@ -23,6 +23,32 @@ public class User {
         this.email = email;
     }
 
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public int getPhone_no() {
+        return phone_no;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public int getBalance() {
+        return balance;
+
+
+    }
+
     @Override
     public String toString() {
         return "User{" +

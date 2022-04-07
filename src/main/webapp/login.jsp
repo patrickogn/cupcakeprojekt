@@ -24,7 +24,11 @@
             <input type="password" id="password" name="password"/>
             <input type="submit"  value="Log in"/>
         </form>
-
+        <br>
+        <h3>Har du ikke en konto endnu?</h3>
+        <form action="OpretBrugerKnapServlet" method="get">
+            <input type="submit"  value="Opret bruger"/>
+        </form>
 
 
     </jsp:body>

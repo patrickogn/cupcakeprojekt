@@ -42,7 +42,18 @@ public class Login extends HttpServlet
         UserMapper userMapper = new UserMapper(connectionPool);
         User user = null;
         String email = request.getParameter("email");
+
         String password = request.getParameter("password");
+
+        //indsat balance
+        String balance = request.getParameter("balance");
+
+        //indsat firstname
+        String firstname = request.getParameter("firstname");
+
+        //indsat lastname/efternavn
+        String lastname = request.getParameter("lastname");
+
 
 
 
@@ -51,7 +62,10 @@ public class Login extends HttpServlet
             user = userMapper.login(email, password);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            session.setAttribute("balance", balance); //setter attribute balance
+            session.setAttribute("firstname", firstname); //setter attribute fornavn
+            session.setAttribute("lastname", lastname); //setter attribute efternavn
+            request.getRequestDispatcher("WEB-INF/tags/brugerside.jsp").forward(request, response);
         }
         catch (DatabaseException e)
         {
