@@ -11,7 +11,7 @@ public class BrugersideServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/tags/brugerside.jsp").forward(request, response);
 
-
+//Testkommentar fra Marie
     }
 
     @Override
