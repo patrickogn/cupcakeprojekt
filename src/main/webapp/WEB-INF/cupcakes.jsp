@@ -25,86 +25,73 @@
 
         <br><br>
 
-
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <title>Bootstrap Example</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        </head>
-        <body>
-
-        <br><br><br><br><br>
-        <h2>Vælg bund</h2>
-        <form action="ChooseCupcakeServlet", "Indexservlet" method="get">
-            <div class="container">
-
-                    <%--        <p>The .thumbnail class can be used to display an image gallery.</p>--%>
-                    <%--        <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>--%>
-                    <%--        <p>Click on the images to enlarge them.</p>--%>
-
-
-                <div class="row">
-                    <c:forEach var="cupcakebuttom" items="${requestScope.cupcakebuttomlist}">
-                        <div class="col-md-2">
-                            <div class="">
-                                    <%--                    <a href="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" target="_blank">--%>
-                                <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}"
-                                     alt="Buttoms" style="width:150px">
-                                <div class="caption">
-<%--                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="${cupcakebuttom.flavor}">--%>
-                                    <input type="radio" id="buttom${cupcakebuttom.flavor}" name="flavorpricebuttom" value="${cupcakebuttom.buttom_id}">
-                                    <label for="buttom${cupcakebuttom.flavor}">${cupcakebuttom.flavor} ${cupcakebuttom.price}
-                                        kr</label><br>
+        <div class="container d-flex align-items-center justify-content-center">
+            <div class="row">
+                <div class="col-8" style="border:1px solid rgba(255,0,0,0)">
+                    <form action="ChooseCupcakeServlet" method="get">
+                        <div class="col " style="border:1px solid rgba(255,0,0,0)">
+                            <div class="row">
+                                <h2>Vælg bund</h2>
+                                <div class="card-group">
+<%--                                <div class="card-group d-flex justify-content-center">--%>
+                                    <c:forEach var="cupcakebuttom" items="${requestScope.cupcakebuttomlist}">
+                                        <div class="row">
+                                            <div class="card m-1" style="width: 11rem">
+                                                <img src="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}"
+                                                     class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <p class="card-text"><input type="radio"
+                                                                                id="buttom${cupcakebuttom.flavor}"
+                                                                                name="flavorpricebuttom"
+                                                                                value="${cupcakebuttom.buttom_id}">
+                                                        <label for="buttom${cupcakebuttom.flavor}">${cupcakebuttom.flavor} ${cupcakebuttom.price}
+                                                            kr</label><br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
                                 </div>
-                                </a>
                             </div>
                         </div>
-                    </c:forEach>
-                </div>
-            </div>
-<%--            <input type="submit" value="Vælg bund">--%>
-<%--        </form>--%>
-
-        <br>
-        <h2>Vælg topping</h2>
-<%--        <form action="ChooseCupcakeServlet" method="get">--%>
-            <div class="container">
-                <div class="row">
-                    <c:forEach var="cupcaketopping" items="${requestScope.cupcaketoppinglist}">
-                        <div class="col-md-2">
-                            <div class="">
-                                    <%--                    <a href="${pageContext.request.contextPath}/images/${cupcakebuttom.buttom_picture_id}" target="_blank">--%>
-                                <img src="${pageContext.request.contextPath}/images/${cupcaketopping.topping_picture_id}"
-                                     alt="Buttoms" style="width:150px">
-                                <div class="caption">
-<%--                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="${cupcaketopping.flavor}">--%>
-                                    <input type="radio" id="topping${cupcaketopping.flavor}" name="flavorpricetopping" value="${cupcaketopping.topping_id}">
-                                    <label for="topping${cupcaketopping.flavor}">${cupcaketopping.flavor} ${cupcaketopping.price}
-                                        kr</label><br>
-                                </div>
-                                </a>
+                        <div class="col" style="border:1px solid rgba(255,0,0,0)">
+                            <h2>Vælg topping</h2>
+                            <div class="card-group">
+                                <c:forEach var="cupcaketopping" items="${requestScope.cupcaketoppinglist}">
+                                    <div class="row">
+                                        <div class="card m-1" style="width: 11rem">
+                                            <img src="${pageContext.request.contextPath}/images/${cupcaketopping.topping_picture_id}"
+                                                 class="card img-top">
+                                            <div class="card-body">
+                                                <p class="card-text"><input type="radio"
+                                                                            id="topping${cupcaketopping.flavor}"
+                                                                            name="flavorpricetopping"
+                                                                            value="${cupcaketopping.topping_id}">
+                                                    <label for="topping${cupcaketopping.flavor}">${cupcaketopping.flavor} ${cupcaketopping.price},-</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
-                    </c:forEach>
+                        <input type="submit" value="Vælg cupcake">
+                    </form>
+                </div>
+                <div class="col-4 p-4" style="border:1px solid rgba(255,0,0,0)">
+                    <div class="jumbotron">
+                        <h2>Indkøbskurv</h2>
+                        <c:forEach var="cartitem" items="${sessionScope.cartDTOList}">
+                            <p>${cartitem.quantity} stk - Bund: ${cartitem.buttom.flavor},
+                                Topping: ${cartitem.topping.flavor} - ${cartitem.price} kr</p>
+                        </c:forEach>
+                        <p>Total: </p>
+                    </div>
+
                 </div>
             </div>
-            <br><br>
-            <input type="submit" value="Vælg cupcake">
-        </form>
-<%--            ${requestScope.chosencupcakelist}--%>
-        <br><br>
-        <c:forEach var="cartitem" items="${sessionScope.cartDTOList}">
-           <p>${cartitem.quantity} stk - Bund: ${cartitem.buttom.flavor}, Topping: ${cartitem.topping.flavor} ${cartitem.price} kr</p>
+        </div>
 
-        </c:forEach>
-
-        </body>
-        </html>
 
     </jsp:body>
 </t:pagetemplate>

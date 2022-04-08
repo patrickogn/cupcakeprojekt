@@ -11,5 +11,42 @@ th, td {
     padding:15px;
 }
 
+/*img {
+    margin: 10px;
+}*/
+/*.cart {
+    display: inline-block;
+    background-color: #4b4a4a;
+    width: 70px;
+    height: 70px;
+    margin: 30px;
+}*/
 
+p.card-text label {
+    font-size: .8rem!important;
 
+}
+
+.card {
+    /*margin: 2rem !important;*/
+    border: none!important;
+    /*size: 6rem !important;*/
+}
+.card img {
+    /*size: 150px!important;*/
+}
+
+.row.card{
+    /*margin: 2rem !important;*/
+    /*border: none!important;*/
+    /*size: 6rem !important;*/
+}
+
+.row.card-img-top{
+    /*size: 150px!important;*/
+}
+
+.jumbotron {
+    border: dimgrey 0.5rem!important;
+    background: #d5d5d5 !important;
+}
