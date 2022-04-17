@@ -35,10 +35,10 @@
 <%--            <p>Rolle: "${sessionScope.role.name}".</p>--%>
 
             <c:if test="${sessionScope.user.roleId == 1}">
-                <p>Rolle: administrator.</p>
+                <p>Rolle: Administrator.</p>
             </c:if>
             <c:if test="${sessionScope.user.roleId == 2}">
-                <p>Rolle: bruger.</p>
+                <p>Rolle: Bruger.</p>
             </c:if>
 <%--        Bedre at hente rollenavnet direkte fra databasen--%>
 
