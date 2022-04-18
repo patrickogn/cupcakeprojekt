@@ -122,21 +122,17 @@ public class UserMapper implements IUserMapper {
         return null;
     }
 
-    public List<User> hentAlleBrugere() throws DatabaseException
-    {
+    public List<User> hentAlleBrugere() throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 
         List<User> brugerlist = new ArrayList<>();
 
         String sql = "SELECT * FROM user";
 
-        try (Connection connection = connectionPool.getConnection())
-        {
-            try (PreparedStatement ps = connection.prepareStatement(sql))
-            {
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
-                while (rs.next())
-                {
+                while (rs.next()) {
                     int user_id = Integer.parseInt(rs.getString("user_id"));
                     String roleIdString = rs.getString("role_id");
                     String password = rs.getString("password");
@@ -151,11 +147,28 @@ public class UserMapper implements IUserMapper {
                     brugerlist.add(newuser);
                 }
             }
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new DatabaseException(ex, "Fejl under indlæsning af lånere fra databasen");
         }
         return brugerlist;
     }
 
+    public int OpdaterBrugerBalance(int balance, int user_id) throws DatabaseException, SQLException {
+        String sql = "UPDATE user set balance = ? where user_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setInt(1,balance);
+                ps.setInt(2,user_id);
+
+                return ps.executeUpdate();
+
+
+            } catch (SQLException ex) {
+                throw new DatabaseException(ex, "Fejl under indlæsning af lånere fra databasen");
+            }
+        }
+    }
 }
+

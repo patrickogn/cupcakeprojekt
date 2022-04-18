@@ -48,6 +48,12 @@ public class User {
 
 
     }
+    public int insert(int i){
+        if(i>0){
+            balance = balance + i;
+        }
+        return balance;
+    }
 
     @Override
     public String toString() {

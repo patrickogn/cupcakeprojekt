@@ -37,6 +37,8 @@
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+
+                        <a class="nav-item nav-link">${sessionScope.user.email}</a>
                     </c:if>
                 </div>
             </div>

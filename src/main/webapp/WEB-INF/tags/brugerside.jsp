@@ -37,19 +37,10 @@
             <c:if test="${sessionScope.user.roleId == 1}">
                 <p>Rolle: administrator.</p>
                 <br>
-                <strong style="font-size: 16px">Send penge til bruger</strong>
-                <form action="TransaktionServlet">
-                    <label for="bruger">Vælg bruger:</label>
-                    <select name="bruger" id="bruger">
-
-                        <c:forEach var="brugerliste" items="${sessionScope.brugerliste}">
-                            <option value="saab">${brugerliste.email}</option>
-                        </c:forEach>
-
-                    </select>
-                    <br><br>
-                    <input type="submit" value="Send penge">
+                <form action="TransaktionServlet" method="get">
+                    <input type="submit"  value="Gå til kundeliste"/>
                 </form>
+
 
 
             </c:if>
