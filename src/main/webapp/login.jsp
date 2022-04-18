@@ -4,6 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
+button {
+background-color: #04AA6D;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+
+
 <t:pagetemplate>
     <jsp:attribute name="header">
              Login
@@ -15,14 +26,13 @@
 
     <jsp:body>
 
-        <h3>You can log in here</h3>
-
         <form action="login" method="post">
-            <label for="email">Email: </label>
-            <input type="text" id="email" name="email"/>
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="password"/>
-            <input type="submit"  value="Log in"/>
+            <label for="email"> </label>
+            <input type="email" id="email" name="email" placeholder="E-mail"/>
+            <label for="password"> </label>
+            <input type="password" id="password" name="password" placeholder="Adgangskode"/>
+            <br>
+            <input type="submit"  value="Log På"/>
         </form>
         <br>
         <h3>Har du ikke en konto endnu?</h3>

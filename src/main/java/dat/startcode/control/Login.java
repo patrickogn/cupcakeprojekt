@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,6 +66,18 @@ public class Login extends HttpServlet
             session.setAttribute("balance", balance); //setter attribute balance
             session.setAttribute("firstname", firstname); //setter attribute fornavn
             session.setAttribute("lastname", lastname); //setter attribute efternavn
+
+            //Indlæser listen over alle brugere
+            List<User> brugerliste = null;
+
+            try {
+                brugerliste = userMapper.hentAlleBrugere();
+            } catch (DatabaseException e) {
+                e.printStackTrace();
+            }
+            session.setAttribute("brugerliste", brugerliste);
+
+
             request.getRequestDispatcher("WEB-INF/tags/brugerside.jsp").forward(request, response);
         }
         catch (DatabaseException e)
