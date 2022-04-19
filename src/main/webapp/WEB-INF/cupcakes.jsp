@@ -76,8 +76,7 @@
                             </div>
                         </div>
                         <input type="submit" value="Vælg cupcake">
-                    </form>
-                </div>
+        </div>
                 <div class="col-4 p-4" style="border:1px solid rgba(255,0,0,0)">
                     <div class="jumbotron">
                         <h2>Indkøbskurv</h2>
@@ -86,7 +85,15 @@
                                 Topping: ${cartitem.topping.flavor} - ${cartitem.price} kr</p>
                         </c:forEach>
                         <p>Total: </p>
+
+                        </form>
+
                     </div>
+                    <input type="submit" value="Betal">
+                    </form>
+                </div>
+                    </div>
+
 
                 </div>
             </div>

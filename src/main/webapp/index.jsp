@@ -33,6 +33,12 @@
             </form>
         </c:if>
 
+        <br>
+        <br>
+        <c:if test="${sessionScope.user != null}">
+            <p>You are logged in with the role of "${sessionScope.user.email}".</p>
+        </c:if>
+
     </jsp:body>
 
 </t:pagetemplate>
