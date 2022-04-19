@@ -153,13 +153,13 @@ public class UserMapper implements IUserMapper {
         return brugerlist;
     }
 
-    public int OpdaterBrugerBalance(int balance, int user_id) throws DatabaseException, SQLException {
+    public int OpdaterBrugerBalance(String balance, int user_id) throws DatabaseException, SQLException {
         String sql = "UPDATE user set balance = ? where user_id = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-                ps.setInt(1,balance);
+                ps.setInt(1, Integer.parseInt(balance));
                 ps.setInt(2,user_id);
 
                 return ps.executeUpdate();
@@ -170,5 +170,72 @@ public class UserMapper implements IUserMapper {
             }
         }
     }
+    public User HentBrugerFraId(int brugerId) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "Brugerid=" + brugerId);
+        User user = null;
+        String sql = "select * FROM user where user_id = ?";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, brugerId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    brugerId = rs.getInt("user_id");
+                    String password = rs.getString("password");
+                    String roleIdString = rs.getString("role_id");
+                    int roleId = Integer.parseInt(roleIdString);
+                    String firstname = rs.getString("firstname");
+                    String surname = rs.getString("lastname");
+                    int balance = Integer.parseInt(rs.getString("balance"));
+                    int phone_no = Integer.parseInt(rs.getString("phone_no"));
+                    String email = rs.getString("email");
+
+                    user = new User(brugerId, password, roleId, firstname, surname, balance, phone_no, email);
+                } else
+                {
+                    throw new DatabaseException("Låner med brugerid = " + brugerId + " findes ikke");
+                }
+            }
+        } catch (SQLException | DatabaseException ex)
+        {
+            throw new DatabaseException(ex, "Fejl i databaseforespørgsel for brugerid = " + brugerId);
+        }
+        return user;
+    }
+
+    public boolean opdaterBruger(User user) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        String sql = "UPDATE user SET password = ?, role_id = ?, firstname = ?, lastname = ?, balance = ?, phone_no = ?, email = ? " +
+                "WHERE user_id = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setString(1, user.getPassword());
+                ps.setInt(2, user.getRole_id());
+                ps.setString(3, user.getFirstname());
+                ps.setString(4, user.getLastname());
+                ps.setInt(5, user.getBalance());
+                ps.setInt(6, user.getPhone_no());
+                ps.setString(7, user.getEmail());
+                ps.setInt(8, user.getUser_id());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1){
+                    result = true;
+                } else {
+                    throw new DatabaseException("Kunne ikke opdatere bruger med bruger_id = " + user.getUser_id());
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException("Kunne ikke opdatere bruger med bruger_id = " + user.getUser_id());
+        }
+        return result;
+    }
 }
+
+
 

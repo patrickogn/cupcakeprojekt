@@ -36,10 +36,8 @@
                         <td>${bruger.lastname}</td>
                         <td>${bruger.balance}</td>
                         <td>
-                            <c:if test="${requestScope.isRoleAllowed}">
-                                <button name="fjern" value="${requestScope.user.user_id}" formaction="fjernbog">fjern</button>
-                                <button name="rediger" value="${requestScope.user.balance}" formaction="redigerbog">rediger</button>
-                            </c:if>
+                            <button name="rediger" value="${bruger.user_id}" formaction="RedigerBrugerServlet">Rediger Bruger</button>
+
                         </td>
                     </tr>
                 </c:forEach>
