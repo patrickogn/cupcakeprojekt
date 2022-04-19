@@ -54,9 +54,6 @@ public class Login extends HttpServlet
         //indsat lastname/efternavn
         String lastname = request.getParameter("lastname");
 
-
-
-
         try
         {
             user = userMapper.login(email, password);

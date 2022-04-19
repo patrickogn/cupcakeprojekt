@@ -30,6 +30,10 @@
             <p style="font-size:18px;">Din nuværende saldo er: ${sessionScope.user.balance} kr.</p>
             <br>
 
+            <form action="OrderServlet" method="get">
+                <input type="submit"  value="Se alle Ordrer"/>
+            </form>
+
             <br>
 <%--            <p>Rolle: "${sessionScope.user.roleId}".</p>--%>
 <%--            <p>Rolle: "${sessionScope.role.name}".</p>--%>
