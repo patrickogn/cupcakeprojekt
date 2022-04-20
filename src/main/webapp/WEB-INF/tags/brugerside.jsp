@@ -39,6 +39,10 @@
                 <form action="OrderServlet" method="get">
                     <input type="submit"  value="Se alle Ordrer"/>
                 </form>
+                <br>
+                <form action="BrugerListeServlet" method="get">
+                    <input type="submit"  value="Gå til kundeliste"/>
+                </form>
             </c:if>
             <c:if test="${sessionScope.user.roleId == 2}">
                 <p>Rolle: Bruger.</p>

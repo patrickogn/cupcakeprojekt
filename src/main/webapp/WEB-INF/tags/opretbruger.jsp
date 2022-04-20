@@ -72,45 +72,43 @@
 <%--<form action="Register" method="get">--%>
 <form action="OpretBrugerServlet">
     <div class="container">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
+        <h1>Opret Profil</h1>
+        <p>Det er hurtigt og nemt.</p>
         <hr>
 
         <%--<label for="User_id"><b>User_id</b></label>
         <input type="text" placeholder="User_id" name="User_id" id="User_id" required>
 --%>
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <label for="email"><b>E-mail</b></label>
+        <input type="text" placeholder="e-mail" name="email" id="email" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <label for="psw"><b>Kodeord</b></label>
+        <input type="password" placeholder="kodeord" name="psw" id="psw" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+        <label for="psw-repeat"><b>Gentag Kodeord</b></label>
+        <input type="password" placeholder="gentag kodeord" name="psw-repeat" id="psw-repeat" required>
 
      <%--   <label for="Role_id"><b>Role_id</b></label>
         <input type="text" placeholder="Role_id" name="Role_id" id="Role_id" required>
         Skal bare sættes til bruger som standard, vroes startadmin, skal så kunne opgradere folk--%>
 
-        <label for="firstname"><b>First name</b></label>
-        <input type="text" placeholder="First name" name="firstname" id="firstname" required>
+        <label for="firstname"><b>Fornavn</b></label>
+        <input type="text" placeholder="Fornavn" name="firstname" id="firstname" required>
 
-        <label for="surname"><b>Surname</b></label>
-        <input type="text" placeholder="Surname" name="surname" id="surname" required>
+        <label for="surname"><b>Efternavn</b></label>
+        <input type="text" placeholder="Efternavn" name="surname" id="surname" required>
 
-        <label for="balance"><b>Balance</b></label>
-        <input type="text" placeholder="Balance" name="balance" id="balance" required>
-
-
+<%--        <label for="balance"><b>Saldo</b></label>--%>
+<%--        <input type="text" placeholder="Balance" name="balance" id="balance" required>--%>
 
         <hr>
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        <p>Ved at oprette en bruger accepterer du vores <a href="#">Betingelser</a>.</p>
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="registerbtn">Opret Profil</button>
     </div>
 
     <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
+        <p>Har du allerede en konto? <a href="login.jsp">Log ind</a>.</p>
     </div>
 </form>
 
