@@ -5,29 +5,25 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Velkommen til forsiden!
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+        Velkommen til forsiden!
     </jsp:attribute>
 
     <jsp:body>
 
-        <p>Startcode for 2nd semester </p>
-
-
-
         <c:if test="${sessionScope.user != null}">
-            <p>You are logged in with the role of "${sessionScope.user.roleId}".</p>
+            <p>Du er logget ind med rollen: "${sessionScope.user.roleId}".</p>
         </c:if>
 
         <c:if test="${sessionScope.user == null}">
-            <p>You are not logged in yet. You can do it here: <a
+            <p>Du er ikke logget ind endnu, du kan gøre det her: <a
                     href="login.jsp">Login</a></p>
             <br>
             <br>
-
+            <p>Ellers kan du oprette en bruger: </p>
             <form action="OpretBrugerKnapServlet" method="get">
                 <input type="submit"  value="Opret bruger"/>
             </form>

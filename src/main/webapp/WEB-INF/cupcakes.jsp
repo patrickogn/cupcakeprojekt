@@ -84,12 +84,20 @@
                             <p>${cartitem.quantity} stk - Bund: ${cartitem.buttom.flavor},
                                 Topping: ${cartitem.topping.flavor} - ${cartitem.price} kr</p>
                         </c:forEach>
-                        <p>Total: </p>
+
+                        <c:set var="total" value="${0}"/>
+                        <c:forEach var="cartitem" items="${sessionScope.cartDTOList}">
+                            <c:set var="total" value="${total + cartitem.price}" />
+                        </c:forEach>
+                        <p>Samlet pris: ${total} kr.</p>
+                        <form action="ShoppingCartServlet" method="get">
+                            <input type="submit"  value="Gå til bestilling"/>
+                        </form>
 
                         </form>
 
                     </div>
-                    <input type="submit" value="Betal">
+
                     </form>
                 </div>
                     </div>
