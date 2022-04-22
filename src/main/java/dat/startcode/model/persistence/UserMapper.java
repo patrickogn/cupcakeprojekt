@@ -2,6 +2,7 @@ package dat.startcode.model.persistence;
 
 import dat.startcode.model.dtos.OrderDTO;
 import dat.startcode.model.entities.Order;
+import dat.startcode.model.entities.OrderLine;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
@@ -145,9 +146,6 @@ public class UserMapper implements IUserMapper
 
         List<Order> ordrerList = new ArrayList<>();
 
-        //String sql = "SELECT * FROM ORDER WHERE order_id using(order_id);";
-      // String sql = "SELECT * FROM cupcakemmp.order inner join order_id using(user_id);";
-       //String sql = "SELECT * FROM cupcakemmp.order;";
        String sql = "SELECT * FROM `order`";
 
 
@@ -175,143 +173,76 @@ public class UserMapper implements IUserMapper
         return ordrerList;
     }
 
-
-//    public List<OrderDTO> hentAlleOrdrer() throws DatabaseException
+    //opret orderline
+//    public OrderLine opretOrderLine(OrderLine orderLine ) throws DatabaseException
 //    {
 //        Logger.getLogger("web").log(Level.INFO, "");
-//        List<OrderDTO> hentAlleOrdrerDTOList = new ArrayList<>();
-//
-//        String sql = "select order_id, user_id, laaner_id, l.navn as laaner_navn, " +
-//                "adresse, postnr, dato, titel, udgivelsesaar, f.navn as forfatter_navn " +
-//                "from laaner l " +
-//                "inner join udlaan using(laaner_id) inner join bog " +
-//                "using(bog_id) inner join forfatter f using(forfatter_id)";
-//
+//        OrderLine orderline;
+//        String sql = "insert into orderline (order_id, quantity, buttom_id,topping_id) values (?,?,?,?)";
 //        try (Connection connection = connectionPool.getConnection())
 //        {
 //            try (PreparedStatement ps = connection.prepareStatement(sql))
 //            {
-//                ResultSet rs = ps.executeQuery();
-//                while (rs.next())
-//                {
-//                    int forfatter_id = rs.getInt("forfatter_id");
-//                    int bogId = rs.getInt("bog_id");
-//                    int laanerId = rs.getInt("laaner_id");
-//                    String laanerNavn = rs.getString("laaner_navn");
-//                    String adresse = rs.getString("adresse");
-//                    int postnr = rs.getInt("postnr");
-//                    Date dato = rs.getDate("dato");
-//                    String titel = rs.getString("titel");
-//                    int udgivelsesaar = rs.getInt("udgivelsesaar");
-//                    String forfatterNavn = rs.getString("forfatter_navn");
-//
-//                    UdlaanDTO dto = new UdlaanDTO(forfatter_id, bogId, laanerId,
-//                            laanerNavn, adresse, postnr, dato, titel, udgivelsesaar, forfatterNavn);
-//                    hentAlleUdlaanDTOList.add(dto);
-//                }
-//            }
-//        }
-//        catch (SQLException ex)
-//        {
-//            throw new DatabaseException(ex, "Fejl under indlæsning af udlaan fra databasen");
-//        }
-//        return hentAlleUdlaanDTOList;
-//    }
-
-   // US-5: Som kunde eller administrator kan jeg logge på systemet med email og kodeord. Når jeg er logget på, skal jeg kunne se min email på hver side (evt. i topmenuen, som vist på mockup’en).
-
-
-
-
-//    @Override
-//    public User PayUser(String email, String password, int roleId, String firstname, String lastname, int balanceInt) throws DatabaseException
-//    {
-//
-//        String user_id = "0";
-//        int user_idInt = Integer.parseInt(user_id);
-//        String phone_no = "12345678";
-//        int phone_noInt = Integer.parseInt(phone_no);
-//        String balance = "" + balanceInt;
-//        Logger.getLogger("web").log(Level.INFO, "");
-//        User user;
-//        String role_id = "" + roleId;
-//        String sql = "insert into user (user_id, password, role_id, firstname, lastname, balance, phone_no, email) values (?,?,?,?,?,?,?,?)";
-//
-//        try (Connection connection = connectionPool.getConnection())
-//        {
-//            try (PreparedStatement ps = connection.prepareStatement(sql))
-//            {
-//                ps.setString(1, user_id);
-//                ps.setString(2, password);
-//                ps.setString(3, role_id);
-//                ps.setString(4, firstname);
-//                ps.setString(5, lastname);
-//                ps.setString(6, balance);
-//                ps.setString(7, phone_no);
-//                ps.setString(8, email);
+//                ps.setInt(1, order_id);
+//                ps.setInt(2, quantity);
+//                ps.setInt(3, buttom_id);
+//                ps.setInt(4, topping_id);
 //                int rowsAffected = ps.executeUpdate();
 //                if (rowsAffected == 1)
 //                {
-//                    user = new User(user_idInt, password, roleId, firstname, lastname, balanceInt, phone_noInt, email);
+//                    orderline = new OrderLine(order_id, quantity, buttom_id,topping_id);
 //                } else
 //                {
-//                    throw new DatabaseException("The user with balance = " + balance + " could not be inserted into the database"); // måske balance int
+//                    throw new DatabaseException("Ordren med order_id = " + order_id + " kunne ikke oprettes i databasen");
 //                }
 //            }
 //        }
 //        catch (SQLException ex)
 //        {
-//            throw new DatabaseException(ex, "Could not insert payement into database");
+//            throw new DatabaseException(ex, "Kunne ikke indsætte order i databasen");
 //        }
-//        return user;
-//
-//
-//        // gør et eller andet med - cupkate top og bottom
+//        return orderline;
 //    }
 
-
-    //Opret order
-//    public Laaner opretNyLaaner(Laaner laaner) throws DatabaseException
-//    {
-//        Logger.getLogger("web").log(Level.INFO, "");
-//        boolean result = false;
-//        int newId = 0;
-//        String sql = "insert into laaner (navn, adresse,  postnr) values (?,?,?)";
-//        try (Connection connection = connectionPool.getConnection())
-//        {
-//            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-//            {
-//                ps.setString(1, laaner.getNavn());
-//                ps.setString(2, laaner.getAdresse());
-//                ps.setInt(3, laaner.getPostnummer());
-//                int rowsAffected = ps.executeUpdate();
-//                if (rowsAffected == 1)
-//                {
-//                    result = true;
-//                } else
-//                {
-//                    throw new DatabaseException("Låner med navn = " + laaner.getNavn() + " kunne ikke oprettes i databasen");
-//                }
-//                ResultSet idResultset = ps.getGeneratedKeys();
-//                if (idResultset.next())
-//                {
-//                    newId = idResultset.getInt(1);
-//                    laaner.setLaaner_id(newId);
-//                } else
-//                {
-//                    laaner = null;
-//                }
-//            }
-//        }
-//        catch (SQLException ex)
-//        {
-//            throw new DatabaseException(ex, "Kunne ikke indsætte låner i databasen");
-//        }
-//        return laaner;
-//    }
-
-
-
+    public OrderLine nyOrderLine(OrderLine orderLine) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        int newId = 0;
+        String sql = "insert into orderline (order_id, quantity, buttom_id, topping_id) values (?,?,?,?)";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setInt(1, orderLine.getOrder_id());
+                ps.setInt(2, orderLine.getQuantity());
+                ps.setInt(3, orderLine.getButtom_id());
+                ps.setInt(3, orderLine.getTopping_id());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    result = true;
+                } else
+                {
+                    throw new DatabaseException("Order med = " + orderLine.getOrder_id() + " kunne ikke oprettes i databasen");
+                }
+                ResultSet idResultset = ps.getGeneratedKeys();
+                if (idResultset.next())
+                {
+                    newId = idResultset.getInt(1);
+                    orderLine.setOrder_id(newId);
+                } else
+                {
+                    orderLine = null;
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Kunne ikke indsætte orderLine i databasen");
+        }
+        return orderLine;
+    }
 
 
 }
