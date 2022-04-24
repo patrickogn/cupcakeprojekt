@@ -75,6 +75,12 @@
                                 </c:forEach>
                             </div>
                         </div>
+
+
+<%--                        Her kan man vælge antal cupcakes--%>
+                        <label for="quantity">Vælg antal mellem 1-20):</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="20">
+
                         <input type="submit" value="Vælg cupcake">
         </div>
                 <div class="col-4 p-4" style="border:1px solid rgba(255,0,0,0)">
@@ -89,6 +95,8 @@
                         <c:forEach var="cartitem" items="${sessionScope.cartDTOList}">
                             <c:set var="total" value="${total + cartitem.price}" />
                         </c:forEach>
+
+
                         <p>Samlet pris: ${total} kr.</p>
                         <form action="ShoppingCartServlet" method="get">
                             <input type="submit"  value="Gå til bestilling"/>
