@@ -4,6 +4,7 @@ import dat.startcode.model.config.ApplicationStart;
 import dat.startcode.model.dtos.CartDTO;
 import dat.startcode.model.entities.Cupcakebuttom;
 import dat.startcode.model.entities.Cupcaketopping;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.*;
 
@@ -31,12 +32,14 @@ public class ChooseCupcakeServlet extends HttpServlet {
         if (cartDTOList == null) {
             cartDTOList = new ArrayList<>();
         }
+
         CupcakeButtomMapperHashmap cupcakeButtomMapperHashmap = new CupcakeButtomMapperHashmap(connectionPool);
         CupcakeToppingMapperHashmap cupcakeToppingMapperHashmap = new CupcakeToppingMapperHashmap(connectionPool);
         try {
 
             String selectedRadiobuttonValueButtom = request.getParameter("flavorpricebuttom");
             Integer selectedButtomId = Integer.parseInt(selectedRadiobuttonValueButtom);
+
             String selectedRadiobuttonValueTopping = request.getParameter("flavorpricetopping");
             Integer selectedToppingId = Integer.parseInt(selectedRadiobuttonValueTopping);
 
@@ -45,13 +48,16 @@ public class ChooseCupcakeServlet extends HttpServlet {
 
             cartDTOList.add(new CartDTO(cupcakeButtomMapperHashmap.getCupcakeButtomObjectMap().get(selectedButtomId), cupcakeToppingMapperHashmap.getCupcakeToppingObjectMap().get(selectedToppingId), antalint));
 
+            String samletpris = request.getParameter("samletpris");
+            System.out.println(samletpris);
+
             session.setAttribute("cartDTOList", cartDTOList);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
 
 
-        //ChosenCupcake chosenCupcake = new ChosenCupcake(selectedRadiobuttonValueButtom, selectedRadiobuttonValueTopping, 5, 5);
+
         //TODO: skal hente priserne fra databasen
 
         request.getRequestDispatcher("").forward(request, response);
