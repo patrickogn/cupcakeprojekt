@@ -98,8 +98,8 @@
         <label for="surname"><b>Efternavn</b></label>
         <input type="text" placeholder="Efternavn" name="surname" id="surname" required>
 
-<%--        <label for="balance"><b>Saldo</b></label>--%>
-<%--        <input type="text" placeholder="Balance" name="balance" id="balance" required>--%>
+        <label for="balance"><b>Saldo</b></label>
+        <input readonly type="text" placeholder="Balance" name="balance" id="balance" value="100" checked required>
 
         <hr>
         <p>Ved at oprette en bruger accepterer du vores <a href="#">Betingelser</a>.</p>
