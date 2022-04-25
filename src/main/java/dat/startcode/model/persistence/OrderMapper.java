@@ -56,7 +56,7 @@ public class OrderMapper {
 
         boolean result = false;
         int newId = 0;
-        String sql = "insert into order (order_id, user_id, total_price,timestamp,status_id) values (?,?,?,?,?)";
+        String sql = "insert into `cupcakemmp`.`order` (order_id, user_id, total_price,timestamp,status_id) values (?,?,?, timestamp,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
@@ -64,8 +64,7 @@ public class OrderMapper {
                 ps.setInt(1, orderDTO.getOrder_id());
                 ps.setInt(2, orderDTO.getUser_id());
                 ps.setInt(3, orderDTO.getTotalPrice());
-                ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
-                ps.setInt(5, orderDTO.getStatus_id());
+                ps.setInt(4, orderDTO.getStatus_id());
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)

@@ -5,16 +5,15 @@ import dat.startcode.model.dtos.OrderDTO;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
+import dat.startcode.model.persistence.IUserMapper;
 import dat.startcode.model.persistence.OrderMapper;
+import dat.startcode.model.persistence.UserMapper;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,19 +36,20 @@ public class OpretOrdreServlet extends HttpServlet {
         response.setContentType("text/html");
 
         int orderid = 0;
-        session.getAttribute("user");
+       // int user_idInt = (int) session.getAttribute("userid1");
 
-        //int user_idInt = Integer.parseInt(request.getParameter("userid"));
-        int user_idInt = 1;
+        String userid = request.getParameter("userid1");
+        System.out.println(userid);
+        int user_idInt = Integer.parseInt(userid);
+
+        String balance = request.getParameter("balance");
+        int balanceint = Integer.parseInt(balance);
+
+        String total = request.getParameter("samletpris");
+        int totalpriceint = Integer.parseInt(total);
 
 
-        int totalpriceint = 0;
-
-        Date date = new Date();
-        Timestamp timestamp = new Timestamp(date.getTime());
-
-
-        OrderDTO orderDTO = new OrderDTO(orderid, user_idInt, totalpriceint, timestamp, 1);
+        OrderDTO orderDTO = new OrderDTO(orderid, user_idInt, totalpriceint, null, 1);
         OrderMapper orderMapper = new OrderMapper(connectionPool);
         try
         {

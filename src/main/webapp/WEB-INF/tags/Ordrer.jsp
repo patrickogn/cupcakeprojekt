@@ -57,7 +57,8 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="order" items="${requestScope.ordrerList}">
+
+            <c:forEach var="order" items="${sessionScope.ordrerList}">
                 <tr>
                     <td>${order.order_id}</td>
                     <td>${order.user_id}</td>
