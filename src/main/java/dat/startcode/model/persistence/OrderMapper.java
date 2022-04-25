@@ -48,50 +48,50 @@ public class OrderMapper {
         }
         return ordrerList;
     }
-}
 
-//    public OrderDTO opretNyOrder(OrderDTO orderDTO, List<CartDTO> cartDTOList) throws DatabaseException
-//    {
-//        Logger.getLogger("web").log(Level.INFO, "");
-//
-//        boolean result = false;
-//        int newId = 0;
-//        String sql = "insert into order (order_id, user_id, total_price,timestamp,status_id) values (?,?,?,?,?)";
-//        try (Connection connection = connectionPool.getConnection())
-//        {
-//            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-//            {
-//                ps.setInt(1, orderDTO.getOrder_id());
-//                ps.setInt(2, orderDTO.getUser_id());
-//                ps.setInt(3, orderDTO.getTotalPrice(cartDTOList));
-//                ps.setTimestamp(4, orderDTO.setTimestamp();
-//                ps.setInt(5, orderDTO.getStatus_id());
-//
-//                int rowsAffected = ps.executeUpdate();
-//                if (rowsAffected == 1)
-//                {
-//                    result = true;
-//                } else
-//                {
-//                    throw new DatabaseException("ordre med ordreid = " + orderDTO.getOrder_id() + " kunne ikke oprettes i databasen");
-//                }
-//                ResultSet idResultset = ps.getGeneratedKeys();
-//                if (idResultset.next())
-//                {
-//                    newId = idResultset.getInt(1);
-//                    orderDTO.setOrder_id(newId);
-//                } else
-//                {
-//                    orderDTO = null;
-//                }
-//            }
-//        }
-//        catch (SQLException ex)
-//        {
-//            throw new DatabaseException(ex, "Kunne ikke indsætte ordre i databasen");
-//        }
-//        return orderDTO;
-//    }
-//}
+
+    public OrderDTO opretNyOrder(OrderDTO orderDTO) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        boolean result = false;
+        int newId = 0;
+        String sql = "insert into order (order_id, user_id, total_price,timestamp,status_id) values (?,?,?,?,?)";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setInt(1, orderDTO.getOrder_id());
+                ps.setInt(2, orderDTO.getUser_id());
+                ps.setInt(3, orderDTO.getTotalPrice());
+                ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+                ps.setInt(5, orderDTO.getStatus_id());
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    result = true;
+                } else
+                {
+                    throw new DatabaseException("ordre med ordreid = " + orderDTO.getOrder_id() + " kunne ikke oprettes i databasen");
+                }
+                ResultSet idResultset = ps.getGeneratedKeys();
+                if (idResultset.next())
+                {
+                    newId = idResultset.getInt(1);
+                    orderDTO.setOrder_id(newId);
+                } else
+                {
+                    orderDTO = null;
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Kunne ikke indsætte ordre i databasen");
+        }
+        return orderDTO;
+    }
+}
 
 

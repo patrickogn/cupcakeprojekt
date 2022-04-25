@@ -52,13 +52,10 @@ public class ChooseCupcakeServlet extends HttpServlet {
             System.out.println(samletpris);
 
             session.setAttribute("cartDTOList", cartDTOList);
+
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
-
-
-
-        //TODO: skal hente priserne fra databasen
 
         request.getRequestDispatcher("").forward(request, response);
 

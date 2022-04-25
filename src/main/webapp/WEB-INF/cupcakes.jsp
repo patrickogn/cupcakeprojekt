@@ -101,19 +101,32 @@
                         <p>Samlet pris: ${total} kr.</p>
 
 
-                        <form action="ShoppingCartServlet" method="get">
-                            <input type="submit"  value="Gå til bestilling"/>
-                        </form>
-
                         </form>
 
                     </div>
 
                     </form>
+
+
+<%--                    Checker om kunden har råd til ordren --> hvis ikke kan kunden rydde ordren.--%>
+
+                    <c:if test="${total > sessionScope.user.balance}">
+                        <strong>Du har ikke nok penge til denne ordre</strong>
+                        <input type="submit" value="Ryd ordre" formaction="${sessionScope.cartDTOList.clear()}">
+                    </c:if>
+
+
+<%--                    Hvis kunden har nok penge kan kunden gå til bestilling.--%>
+
+                    <c:if test="${total <= sessionScope.user.balance}">
+                    <form action="OpretOrdreServlet" method="post">
+                        <input type="submit"  value="Gå til bestilling"/>
+                    </form>
+
+                    </c:if>
+
                 </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

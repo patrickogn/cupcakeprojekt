@@ -44,26 +44,15 @@ public class OpretBrugerServlet extends HttpServlet {
         String phone_no = "11111111";
         int phone_noInt = Integer.parseInt(phone_no);
 
-
-//        UserMapper userMapper = new UserMapper(connectionPool);
-//        try {
-//            userMapper.createUser(email, password, roleId, firstname, surname, balance);
-        //TODO: vil gerne bruge createUser-metoden, men kan ikke få det til at virke
-//        } catch (DatabaseException e) {
-//            e.printStackTrace();
-//        }
-
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
         String role_id = "" + roleId;
-        //String sql = "insert into user (email, password, roleIdString, firstname, surname, balanceString) values (?,?,?,?,?,?)";
+
         String sql = "insert into user (user_id, password, role_id, firstname, lastname, balance, phone_no, email) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-
-
                 ps.setString(1, user_id);
                 ps.setString(2, password);
                 ps.setString(3, role_id);
@@ -72,15 +61,6 @@ public class OpretBrugerServlet extends HttpServlet {
                 ps.setString(6, balance);
                 ps.setString(7, phone_no);
                 ps.setString(8, email);
-
-
-//                ps.setString(1, email);
-//                ps.setString(2, password);
-//                ps.setString(3, roleIdString);
-//                ps.setString(4, firstname);
-//                ps.setString(5, surname);
-//                ps.setString(6, balanceString);
-
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
@@ -101,10 +81,6 @@ public class OpretBrugerServlet extends HttpServlet {
             }
         }
         request.getRequestDispatcher("index.jsp").forward(request, response);
-
-        //User user = new User(email, password, roleId, firstname, surname, balance);
-
-       // request.getRequestDispatcher("WEB-INF/tags/opretbruger.jsp").forward(request, response);
 
     }
 

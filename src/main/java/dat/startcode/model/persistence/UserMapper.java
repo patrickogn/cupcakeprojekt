@@ -20,37 +20,6 @@ public class UserMapper implements IUserMapper
     {
         this.connectionPool = connectionPool;
     }
-//    @Override
-//    public User login(String email, String password) throws DatabaseException
-//    {
-//        Logger.getLogger("web").log(Level.INFO, "");
-//
-//        User user = null;
-//
-//        String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-//
-//        try (Connection connection = connectionPool.getConnection())
-//        {
-//            try (PreparedStatement ps = connection.prepareStatement(sql))
-//            {
-//                ps.setString(1, email);
-//                ps.setString(2, password);
-//                ResultSet rs = ps.executeQuery();
-//                if (rs.next())
-//                {
-//                    String role = rs.getString("role_id");
-//                    user = new User(email, password, role);
-//                } else
-//                {
-//                    throw new DatabaseException("Wrong email or password");
-//                }
-//            }
-//        } catch (SQLException ex)
-//        {
-//            throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
-//        }
-//        return user;
-//    }
 
     @Override
     public User login(String email, String password) throws DatabaseException
@@ -171,6 +140,7 @@ public class UserMapper implements IUserMapper
         return brugerlist;
     }
 
+
     //Metode kan opdatere brugers informationer - herunder saldo --> US-3
     public boolean opdaterBruger(User user) throws DatabaseException
     {
@@ -240,9 +210,6 @@ public class UserMapper implements IUserMapper
     }
 
 
-
-
-
    // US-6: Som administrator kan jeg se alle ordrer i systemet, så jeg kan se hvad der er blevet bestilt.
 
     public List<Order> hentAlleOrdrer() throws DatabaseException
@@ -251,9 +218,6 @@ public class UserMapper implements IUserMapper
 
         List<Order> ordrerList = new ArrayList<>();
 
-        //String sql = "SELECT * FROM ORDER WHERE order_id using(order_id);";
-      // String sql = "SELECT * FROM cupcakemmp.order inner join order_id using(user_id);";
-       //String sql = "SELECT * FROM cupcakemmp.order;";
        String sql = "SELECT * FROM `order`";
 
 
