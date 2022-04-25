@@ -42,11 +42,7 @@
 <br>
 <br>
 <label for="balance"><b>Saldo</b></label>
-<input readonly type="text" name="balance" id="balance" value="100" checked required>
-<br>
-<br>
-<label for="samletpris1"><b>I alt: </b></label>
-<input readonly type="text" name="samletpris1" id="samletpris1" value="${total}" checked required>
+<input readonly type="text" name="balance" id="balance" value="${sessionScope.user.balance}" checked required>
 <br>
 <br>
 <div class="col-4 p-4" style="border:1px solid rgba(255,0,0,0)">

@@ -27,7 +27,7 @@
             <strong style="font-size: 25px;">Velkommen tilbage:  ${sessionScope.user.firstname} ${sessionScope.user.lastname}</strong>
             <br>
             <br>
-            <p style="font-size:18px;">Din nuværende saldo er: ${sessionScope.user.balance} kr.</p>
+            <p style="font-size:18px;">Din nuværende saldo er: <strong>${sessionScope.user.balance} kr.</strong> </p>
             <br>
 
             <br>

@@ -77,11 +77,13 @@
                         </div>
 
 
-<%--                        Her kan man vælge antal cupcakes--%>
+<%--                        Her kan man vælge antal cupcakes (kun for brugere)--%>
+                        <c:if test="${sessionScope.user.user_id != null}">
                         <label for="quantity">Vælg antal mellem 1-20):</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="20">
 
                         <input type="submit" value="Vælg cupcake">
+                        </c:if>
         </div>
                 <div class="col-4 p-4" style="border:1px solid rgba(255,0,0,0)">
                     <div class="jumbotron">
@@ -99,6 +101,8 @@
 
                         <c:set var="samletpris" value="${total}"/>
                         <p>Samlet pris: ${total} kr.</p>
+
+
 
 
                         </form>
@@ -123,6 +127,12 @@
                         <input type="submit"  value="Gå til bestilling"/>
                     </form>
 
+                    </c:if>
+
+
+                    <c:if test="${sessionScope.user.user_id == null}">
+                        ${sessionScope.cartDTOList.clear()}
+                        <strong>Log ind for at oprette en ordre</strong>
                     </c:if>
 
                 </div>
